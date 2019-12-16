@@ -7,12 +7,14 @@ def home(request):
     bio = home.bio()
     social = home.socal_links()
     expertise = home.expertise()
+    skills = home.skills()
 
     data = {
         'langs': langs,
         'bio': bio,
         'social': social,
         'expertise': expertise,
+        'skills': skills,
     }
 
     return(

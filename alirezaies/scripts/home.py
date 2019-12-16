@@ -4,6 +4,8 @@ from ..models import (
     Language,
     SocialLinks,
     Specialities,
+    SkillCategory,
+    Skill
 )
 
 class HomeView():
@@ -59,4 +61,10 @@ class HomeView():
                 break
 
         return objects
+
+    def skills(self):
+        skills_q = SkillCategory.objects.all()
+
+        return skills_q
+
     
