@@ -37,3 +37,8 @@ class HomeView():
         skills_q = SkillCategory.objects.all()
 
         return skills_q
+
+    def experience(self):
+        data = sinergy(Experience, 'start_time')
+
+        return data

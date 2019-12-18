@@ -1,4 +1,4 @@
-def sinergy(model):
+def sinergy(model, order_by=None):
     """
     For easy understanding:
     imagine we have five items in our db (1,2,3,4,5)
@@ -8,9 +8,13 @@ def sinergy(model):
 
     so I can use len(objects) to make 'row's and nest other shits using for loop
     """
-
-    q = model.objects.all()
+    if order_by is None:
+        q = model.objects.all()
+    else:
+        q = model.objects.all().order_by(order_by)
+        
     q_counter = model.objects.count()
+    
 
     #prepare objects
     # for now, only me and God know how this code works

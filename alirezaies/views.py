@@ -8,6 +8,7 @@ def home(request):
     social = home.socal_links()
     expertise = home.expertise()
     skills = home.skills()
+    experience = home.experience()
 
     data = {
         'langs': langs,
@@ -15,6 +16,7 @@ def home(request):
         'social': social,
         'expertise': expertise,
         'skills': skills,
+        'exp': experience,
     }
 
     return(
