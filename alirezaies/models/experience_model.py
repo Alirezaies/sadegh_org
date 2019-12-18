@@ -5,7 +5,7 @@ class Experience(models.Model):
     role = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     start_time = models.DateTimeField()
-    end_time = models.DateTimeField(null=True)
+    end_time = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return self.company

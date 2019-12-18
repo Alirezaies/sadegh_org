@@ -17,14 +17,10 @@
                                 <h3>{{ item.name }}</h3>
                                 {% for skill in item.skills.all %}
                                     <div class="progress-item">
-                                        <span class="progress-title">
-                                            {{ skill.name }}
-                                        </span>
+                                        <span class="progress-title">{{ skill.name }}</span>
                                         <div class="progress">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.percent }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ skill.percent }}%;">
-                                                <span class="progress-percent">
-                                                    {{ skill.percent }}%
-                                                </span>
+                                                <span class="progress-percent">{{ skill.percent }}%</span>
                                             </div>
                                         </div>
                                     </div>
