@@ -20,3 +20,14 @@ def home(request):
     return(
         render(request, 'index.html', data)
     )
+
+def hearts(request):
+    return(
+        render(request, 'hearts.html', {})
+    )
+
+
+def nil(request):
+    return(
+        render(request, 'nil.html', {})
+    )
