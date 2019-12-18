@@ -10,6 +10,7 @@ from ..models import (
     SkillCategory,
     Skill,
     Experience,
+    ContactInfo,
 )
 
 class HomeView():
@@ -40,5 +41,10 @@ class HomeView():
 
     def experience(self):
         data = sinergy(Experience, 'start_time')
+
+        return data
+
+    def contact_info(self):
+        data = ContactInfo.objects.first()
 
         return data

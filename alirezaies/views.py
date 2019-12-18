@@ -9,6 +9,7 @@ def home(request):
     expertise = home.expertise()
     skills = home.skills()
     experience = home.experience()
+    contact_info = home.contact_info()
 
     data = {
         'langs': langs,
@@ -17,6 +18,7 @@ def home(request):
         'expertise': expertise,
         'skills': skills,
         'exp': experience,
+        'c_info': contact_info,
     }
 
     return(
