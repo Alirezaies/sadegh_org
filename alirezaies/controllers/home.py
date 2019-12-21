@@ -2,6 +2,7 @@
 from django.shortcuts import (
     get_object_or_404,
     render,
+    redirect,
 )
 
 from .forms.contact_form import ContactUsForm
@@ -63,6 +64,7 @@ class HomeView():
 
 # ================ Home View Controller ================
     def home_controller(self, request):
+                
         langs = Language.objects.all()
         bio = get_object_or_404(Bio, id=1)
         social = SocialLinks.objects.all()
@@ -81,6 +83,16 @@ class HomeView():
             'c_info': contact_info,
         }
 
-        return(
-            render(request, 'index.html', data)
-        )
+        if request.method == 'POST':
+            form = ContactUsForm(request.POST)
+            if form.is_valid():
+                form.save(commit=True)
+                return(
+                    redirect('/hearts/')
+                )
+        else:
+            form = ContactUsForm()
+            data.update({'form': form})
+            return(
+                render(request, 'index.html', data)
+            )
