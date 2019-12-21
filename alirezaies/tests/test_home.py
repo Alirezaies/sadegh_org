@@ -4,19 +4,19 @@ from django.urls import(
     reverse
 )
 
-from ..views import home
+from ..controllers.home import HomeView
 from ..models import *
-from .. import views
 
 class HomeTest(TestCase):
     def setUp(self):
         Bio.objects.create(bio='this is a test bio!')
+        self.home_view = HomeView().home_controller
 
     def home_url_resolves_resolves_home_func(self):
         url = reverse('home')
         view = resolve(url)
 
-        self.assertEquals(view.func, views.home)
+        self.assertEquals(view.func, self.home_view)
 
     def test_home_view_status_code_404_on_no_bio(self):
         """ no bio added to the database """

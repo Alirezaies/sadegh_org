@@ -1,11 +1,15 @@
 from django.contrib import admin
 from django.urls import path
 
-from alirezaies import views
+from alirezaies.controllers import (
+    home,
+    hearts,
+    nil
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('hearts/', views.hearts, name='hearts'),
-    path('nil/', views.nil, name='nil')
+    path('', home.HomeView().home_controller, name='home'),
+    path('hearts/', hearts.hearts_controller, name='hearts'),
+    path('nil/', nil.nil_controller, name='nil')
 ]
