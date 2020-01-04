@@ -25,7 +25,11 @@ SECRET_KEY = '%&g@zvby_w+1e1p07c2&by@ckai@!at-xk9c%nvht=t-0fwpxy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'alirezaies',
     'widget_tweaks',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGOUT_REDIRECT_URL ='home'
+LOGIN_REDIRECT_URL='home'
