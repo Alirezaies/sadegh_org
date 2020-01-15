@@ -1,0 +1,10 @@
+{% load widget_tweaks %}
+
+{% csrf_token %}
+
+{% for field in form %}
+    <div class="wrap-input100 validate-input m-b-16">
+        {% render_field field class="input100" placeholder=field.label %}
+    </div>
+{% endfor %}
+
