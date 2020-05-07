@@ -24,23 +24,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = '%&g@zvby_w+1e1p07c2&by@ckai@!at-xk9c%nvht=t-0fwpxy'
 if os.getenv('SECRET_KEY'):
-    SECRET_KEY = os.getenv('SECRET_KEY')
+    SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
-debug_flag = os.getenv('DEBUG')
+debug_flag = str(os.getenv('DEBUG'))
 
 if debug_flag == 'True':
     DEBUG = True
-
-WEBSITE_DOMAIN = os.getenv('WEBSITE_DOMAIN')
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
     'localhost',
-    WEBSITE_DOMAIN,
+    'sadegh.org',
 ]
 
 
@@ -56,6 +54,7 @@ INSTALLED_APPS = [
     'alirezaies',
     'widget_tweaks',
     'authentication',
+    'captcha',
 ]
 
 MIDDLEWARE = [
