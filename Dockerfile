@@ -1,4 +1,4 @@
-FROM debian:cutsom
+FROM debian:buster
 
 LABEL MAINTAINER="alirezaie@sadegh.org"
 

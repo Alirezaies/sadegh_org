@@ -12,6 +12,8 @@ services:
       DEBUG: 'False'
       SECRET_KEY: '%&g@zvby_w+1e1p07c2&by@ckai@!at-xk9c%nvht=t-0fwpxy'
       WEBSITE_DOMAIN: 'sadegh.org'
+      RECAPTCHA_PUBLIC_KEY: 'MyRecaptchaKey123'
+      RECAPTCHA_PRIVATE_KEY: 'MyRecaptchaPrivateKey456'
   
   nginx:
     image: nginx:1.17.9
