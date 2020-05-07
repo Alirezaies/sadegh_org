@@ -34,10 +34,13 @@ debug_flag = os.getenv('DEBUG')
 if debug_flag == 'True':
     DEBUG = True
 
+WEBSITE_DOMAIN = os.getenv('WEBSITE_DOMAIN')
+
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
     'localhost',
+    WEBSITE_DOMAIN,
 ]
 
 
@@ -71,7 +74,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'alirezaies', 'templates')
+            os.path.join(BASE_DIR, 'alirezaies', 'templates'),
+            os.path.join(BASE_DIR, 'alirezaies', 'static'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -136,6 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'alirezaies/static/'
 
 LOGOUT_REDIRECT_URL ='home'
 LOGIN_REDIRECT_URL='home'
