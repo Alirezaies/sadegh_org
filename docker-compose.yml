@@ -5,12 +5,12 @@ services:
     build: .
 
     volumes: 
-      - static_files:/usr/src/app/alirezaies/static:z
+      - static_files:/usr/src/app/alirezaies/static/:z
+      - gunicorn_sock:/tmp/:z
 
     environment: 
       DEBUG: 'False'
       SECRET_KEY: '%&g@zvby_w+1e1p07c2&by@ckai@!at-xk9c%nvht=t-0fwpxy'
-      WEBSITE_DOMAIN: 'sadegh.org'
       RECAPTCHA_PUBLIC_KEY: 'MyRecaptchaKey123'
       RECAPTCHA_PRIVATE_KEY: 'MyRecaptchaPrivateKey456'
   
@@ -22,7 +22,9 @@ services:
     volumes: 
       - static_files:/usr/share/nginx/html/static/:z
       - ./nginx.conf:/etc/nginx/nginx.conf:z
+      - gunicorn_sock:/tmp/:z
 
 
 volumes: 
   static_files:
+  gunicorn_sock:
