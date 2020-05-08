@@ -5,7 +5,6 @@ services:
     build: .
 
     volumes: 
-      - gunicorn_socket:/tmp/:z
       - static_files:/usr/src/app/alirezaies/static:z
 
     environment: 
@@ -21,11 +20,9 @@ services:
       - 8080:80
 
     volumes: 
-      - gunicorn_socket:/tmp/:z
       - static_files:/usr/share/nginx/html/static/:z
       - ./nginx.conf:/etc/nginx/nginx.conf:z
 
 
 volumes: 
-  gunicorn_socket:
   static_files:
