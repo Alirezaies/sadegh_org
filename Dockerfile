@@ -1,13 +1,8 @@
-FROM debian:buster
+FROM python:3.8-buster
 
 LABEL MAINTAINER="alirezaie@sadegh.org"
 
-RUN apt update &&\
-    apt upgrade -y &&\
-    apt install -y sqlite3 \
-    python3 \
-    python3-pip &&\
-    pip3 install --upgrade pip;
+WORKDIR /usr/src/app
 
 COPY ./app/ /usr/src/app
 
@@ -18,6 +13,5 @@ RUN python3 /usr/src/app/manage.py makemigrations &&\
     echo "yes" | python3 /usr/src/app/manage.py collectstatic;
 
 
-WORKDIR /usr/src/app
 
 CMD ["/usr/local/bin/gunicorn", "--bind", "unix:/tmp/gunicorn.sock", "sadegh_org.wsgi"]
