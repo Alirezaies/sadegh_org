@@ -750,7 +750,7 @@ button:focus,
     right      : 0;
     top        : 0;
     z-index    : 9999;
-    }
+}
 
 #status,
 .status-mes {
@@ -763,7 +763,7 @@ button:focus,
     position            : absolute;
     top                 : 50%;
     width               : 200px;
-    }
+}
 
 .status-mes {
     background : none;
@@ -771,4 +771,8 @@ button:focus,
     margin     : 0;
     text-align : center;
     top        : 65%;
-    }
+}
+
+.profile-pic{
+    border-radius: 10px;
+}
