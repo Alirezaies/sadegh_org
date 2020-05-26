@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
 from .forms.signup_form import SignUpForm
 
+
 def signup(request):
     err_flag = False
 

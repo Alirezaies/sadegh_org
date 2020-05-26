@@ -1,0 +1,232 @@
+{% extends 'admin/master.html' %}
+
+{% load static %}
+
+{% block header %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <title>{{ title }}</title>
+
+        <link href="{% static 'admin/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'admin/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet"/>
+
+        <script src="{% static 'admin/js/all.min.js' %}"></script>
+        <script src="{% static 'css/font-awesome.min.css' %}"></script>
+    </head>
+{% endblock header %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+{% endblock breadcrumb %}
+
+{% block content %}
+
+    {% comment %}
+        ** Welcome Message **
+    {% endcomment %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-dark" role="alert">
+                    <p>
+                        Hello <b>{{ user.get_username }}</b><br>
+                        Last Login on <b>{{ last_login }}</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} 
+            ** Dashboard Cards **
+        {% endcomment %}
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fa fa-envelope"></i>
+                        <b>Messages</b>
+                    </div>
+                    <div class="card-body">
+                        {% if messages_info %}
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-inbox">
+                                        </i>
+                                        Inbox: {{ messages_info.messages_count }}
+                                    </li>
+
+                                     <li class="list-group-item">
+                                        <i class="fa fa-envelope">
+                                        </i>
+                                        Latest Message From <b>{{ messages_info.latest_message.name }}</b>
+                                    </li>  
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-comment-dots"></i>
+                                        Subject: <b>{{ messages_info.latest_message.subject }}</b>
+                                        On {{ messages_info.latest_message.date }}
+                                    </li>  
+                                </ul>
+
+                        {% else %}
+                            <div class="text-center">
+                                <h3>
+                                    You Have No Messages
+                                </h3>
+                            </div>
+                        {% endif %}
+                    </div> 
+                    {% comment %}
+                        ** End Card Body **
+                    {% endcomment %}
+                    <div class="card-footer text-center d-flex align-items-center justify-content-center">
+                        <a type="button" class="btn btn-secondary" href="#">
+                        <i class="fa fa-envelope"></i>
+                            <b>View Inbox</b>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} 
+                ** Users Card **
+            {% endcomment %}
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fa fa-user"></i>
+                        <b>Last 3 Users</b>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for user in last_three_users %}
+                                <li class="list-group-item">
+                                    <i class="fa fa-user"></i>
+                                    <b>{{ user.username }}</b>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div> 
+                    {% comment %}
+                        ** End Card Body **
+                    {% endcomment %}
+
+                    <div class="card-footer text-center d-flex align-items-center justify-content-center">
+                        <a type="button" class="btn btn-secondary" href="#">
+                        <i class="fa fa-user"></i>
+                            <b>User Management</b>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% comment %} 
+                ** End Users Card **
+            {% endcomment %}
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block sidebar %}
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+
+                            <div class="sb-sidenav-menu-heading">Main</div>
+
+                            <a class="nav-link" href="{% url 'admin_dashboard'%}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                Dashboard
+                            </a>
+
+                            <div class="sb-sidenav-menu-heading">Settings</div>
+
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                Settings
+                                <div class="sb-sidenav-collapse-arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
+                            </a>
+
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">Profile Review</a>
+                                    <a class="nav-link" href="#">Security Settings</a>
+                                    <a class="nav-link" href="#">Delete Account</a>
+                                </nav>
+                            </div>
+
+                            <div class="sb-sidenav-menu-heading">User Management</div>
+
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                Users
+                                <div class="sb-sidenav-collapse-arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
+                            </a>
+
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link collapsed" href="#">Users List</a>
+                                    <a class="nav-link collapsed" href="#">Create A New User</a>
+                                </nav>
+                            </div>
+
+                            <div class="sb-sidenav-menu-heading">Blog</div>
+
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-pen-nib"></i>
+                                </div>
+                                Blog
+                                <div class="sb-sidenav-collapse-arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
+                            </a>
+
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link collapsed" href="#">Articles</a>
+                                    <a class="nav-link collapsed" href="#">New Article</a>
+                                </nav>
+                            </div>
+
+                            <div class="sb-sidenav-menu-heading">Mailbox</div>
+
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-inbox"></i>
+                                </div>
+                                Mailbox
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        {{ user.get_username }}
+                    </div>
+                </nav>
+{% endblock sidebar %}
+
+{% comment %} 
+    **** This Is Just For Demonstration On How To Load JS Files ****
+    TODO: should be used only when needed.
+{% endcomment %}
+{% block include_js %}
+    {% include './includes/js/chart_js/chart_js.html' %}
+    {% include './includes/js/dataTables/dataTables.html' %}
+{% endblock include_js %}

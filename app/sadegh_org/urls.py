@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import (
     path,
     re_path,
+    include,
 )
 from django.contrib.auth import views as auth_views
 
@@ -13,7 +14,11 @@ from alirezaies.controllers import (
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
+    # ============ Admin Panel ============
+    path('admin/', include('admin.urls')),
+
+    # ============ Home ============
     path('', home.HomeView().home_controller, name='home'),
 
     # ============ Hearts ============

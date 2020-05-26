@@ -27,7 +27,7 @@ class HomeView():
         the output for the above datas would be like:
         objects = [[1,2], [3,4], [5]]
 
-        so I can use len(objects) to make 'row's and nest other shits using for loop
+        so I can use len(objects) to make 'row's and nest other things using for loop
         """
         if order_by is None:
             q = model.objects.all()
@@ -39,7 +39,7 @@ class HomeView():
 
         #prepare objects
         # for now, only me and God know how this code works
-        # for upcoming questions, ask God about it
+        # for upcoming questions, ask God about it (not me!)
 
         objects = []
         List = []
