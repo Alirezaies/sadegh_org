@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 
 from alirezaies.models.contact_form_model import ContactForm
 
-# TODO: login required
 @method_decorator(login_required, name='dispatch')
 class MailBoxView(ListView):
     """
