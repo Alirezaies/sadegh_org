@@ -10,6 +10,7 @@ class DeleteMail(DeleteView):
     """
     delete a mail
     """
+    
     model = ContactForm
     template_name = 'admin/mail/delete_mail.html'
     success_url = reverse_lazy('mailbox')

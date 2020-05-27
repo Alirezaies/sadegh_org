@@ -1,0 +1,61 @@
+{% extends '../master.html' %}
+
+{% load static %}
+
+{% block header %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <title>{{ title }}</title>
+
+        <link href="{% static 'admin/css/styles.css' %}" rel="stylesheet" />
+
+        <script src="{% static 'admin/js/all.min.js' %}"></script>
+        <script src="{% static 'css/font-awesome.min.css' %}"></script>
+    </head>
+{% endblock header %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            <a href="{% url 'admin_dashboard' %}">
+                Dashboard
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'users_list' %}">
+            Users
+            </a>
+        </li>
+        <li class="breadcrumb-item">Delete</li>
+        <li class="breadcrumb-item active">{{ title }}</li>
+    </ol>
+{% endblock breadcrumb %}
+
+{% block sidebar %}
+    {% include '../includes/sidebar.html' %} 
+{% endblock sidebar %}
+
+{% block content %}
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-danger text-center">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>Are you sure you want to delete "{{ object.username }}"?</p>
+                        <button type="submit" class="btn btn-danger">
+                            Confirm
+                        </button>
+                        <a type="button" class="btn btn-success" href="{% url 'user_edit' pk=object.pk  %}">
+                            Cancel
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
