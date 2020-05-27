@@ -1,11 +1,10 @@
 from django.views.generic import DeleteView
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse_lazy
 
 from alirezaies.models.contact_form_model import ContactForm
 
-@method_decorator(login_required, name='dispatch')
+@user_passes_test(lambda user: user.is_superuser)
 class DeleteMail(DeleteView):
     """
     delete a mail

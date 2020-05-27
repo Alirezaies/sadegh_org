@@ -1,10 +1,9 @@
 from django.views.generic import ListView
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 
 
-@method_decorator(login_required, name='dispatch')
+@user_passes_test(lambda user: user.is_superuser)
 class UsersList(ListView):
     """
     users list view

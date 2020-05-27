@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 from alirezaies.models.contact_form_model import ContactForm
 
-@login_required
+@user_passes_test(lambda user: user.is_superuser)
 def main_admin_panel_func(request):
     """
     this function handles the index page of the admin panel
@@ -26,7 +26,6 @@ def main_admin_panel_func(request):
         messages_info.update(messages_count=messages_count)
 
     # get last 3 users
-    # TODO: users should have links to their profile in the rendered template
     last_three_users = User.objects.all().order_by('-id')[:3]
 
     # return data

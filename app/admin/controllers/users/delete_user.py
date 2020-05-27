@@ -1,12 +1,11 @@
 from django.contrib.auth.models import User
 from django.views.generic import DeleteView
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
 
 
-@method_decorator(login_required, name='dispatch')
+@user_passes_test(lambda user: user.is_superuser)
 class DeleteUser(DeleteView):
     """
     delete a user

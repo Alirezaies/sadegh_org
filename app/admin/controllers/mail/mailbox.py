@@ -1,10 +1,9 @@
 from django.views.generic import ListView
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 from alirezaies.models.contact_form_model import ContactForm
 
-@method_decorator(login_required, name='dispatch')
+@user_passes_test(lambda user: user.is_superuser)
 class MailBoxView(ListView):
     """
     List all the mails in the mailbox
