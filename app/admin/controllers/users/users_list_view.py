@@ -22,7 +22,7 @@ class UsersList(ListView):
         return context
 
     def get_queryset(self):
-        query_set = super().get_queryset().order_by('-date_joined')
+        query_set = super().get_queryset().order_by('date_joined')
 
         return query_set
 
