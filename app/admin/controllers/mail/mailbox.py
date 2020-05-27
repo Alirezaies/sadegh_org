@@ -1,10 +1,9 @@
 from django.views.generic import ListView
-from django.contrib.auth.decorators import user_passes_test
 
 from alirezaies.models.contact_form_model import ContactForm
+from admin.controllers.views import SuperUserPermissionMixin
 
-@user_passes_test(lambda user: user.is_superuser)
-class MailBoxView(ListView):
+class MailBoxView(SuperUserPermissionMixin, ListView):
     """
     List all the mails in the mailbox
     """

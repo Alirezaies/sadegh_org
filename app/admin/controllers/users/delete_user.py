@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from django.views.generic import DeleteView
-from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
 
+from admin.controllers.views import SuperUserPermissionMixin
 
-@user_passes_test(lambda user: user.is_superuser)
-class DeleteUser(DeleteView):
+
+class DeleteUser(SuperUserPermissionMixin, DeleteView):
     """
     delete a user
     TODO:

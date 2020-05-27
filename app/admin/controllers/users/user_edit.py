@@ -1,10 +1,10 @@
 from django.views.generic import UpdateView
-from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 
-@user_passes_test(lambda user: user.is_superuser)
-class EditUser(UpdateView):
+from admin.controllers.views import SuperUserPermissionMixin
+
+class EditUser(SuperUserPermissionMixin, UpdateView):
     """
     edit a user
     **** IMPORTANT: THIS FUNCTION SHOULD NEVER DELETE THE OLDEST SUPER USER ****

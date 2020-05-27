@@ -1,11 +1,11 @@
 from django.views.generic import ListView
-from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import get_object_or_404
 
 from alirezaies.models.contact_form_model import ContactForm
+from admin.controllers.views import SuperUserPermissionMixin
 
-@user_passes_test(lambda user: user.is_superuser)
-class MailView(ListView):
+
+class MailView(SuperUserPermissionMixin, ListView):
     """
     view a mail
     """
@@ -17,7 +17,7 @@ class MailView(ListView):
         query_set = get_object_or_404(ContactForm, pk=self.kwargs['pk'])
 
         return query_set
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = self.get_queryset().subject

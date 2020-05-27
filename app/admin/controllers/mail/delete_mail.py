@@ -1,11 +1,11 @@
 from django.views.generic import DeleteView
-from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse_lazy
 
 from alirezaies.models.contact_form_model import ContactForm
+from admin.controllers.views import SuperUserPermissionMixin
 
-@user_passes_test(lambda user: user.is_superuser)
-class DeleteMail(DeleteView):
+
+class DeleteMail(SuperUserPermissionMixin, DeleteView):
     """
     delete a mail
     """

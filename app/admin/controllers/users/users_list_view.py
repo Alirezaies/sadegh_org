@@ -1,10 +1,10 @@
 from django.views.generic import ListView
-from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 
+from admin.controllers.views import SuperUserPermissionMixin
 
-@user_passes_test(lambda user: user.is_superuser)
-class UsersList(ListView):
+
+class UsersList(SuperUserPermissionMixin, ListView):
     """
     users list view
     """
