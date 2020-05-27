@@ -77,3 +77,7 @@ urlpatterns = [
         name='password_change_done'
     ),
 ]
+
+handler404 = 'alirezaies.controllers.error_handler.error_404'
+handler403 = 'alirezaies.controllers.error_handler.error_403'
+handler500 = 'alirezaies.controllers.error_handler.error_500'
