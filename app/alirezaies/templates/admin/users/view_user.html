@@ -1,0 +1,68 @@
+{% extends '../master.html' %}
+
+{% load static %}
+
+{% block header %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <title>{{ title }}</title>
+
+        <link href="{% static 'admin/css/styles.css' %}" rel="stylesheet" />
+
+        <script src="{% static 'admin/js/all.min.js' %}"></script>
+        <script src="{% static 'css/font-awesome.min.css' %}"></script>
+    </head>
+{% endblock header %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            <a href="{% url 'admin_dashboard' %}">
+                Dashboard
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'users_list' %}">
+            Users
+            </a>
+        </li>
+        <li class="breadcrumb-item">View User</li>
+        <li class="breadcrumb-item active">{{ user_object.username }}</li>
+    </ol>
+{% endblock breadcrumb %}
+
+{% block sidebar %}
+    {% include '../includes/sidebar.html' %} 
+{% endblock sidebar %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="well well-sm">
+                <div class="row text-center">
+                    <div class="col">
+                        <h4>
+                            {{ user_object.username }}
+                            </h4>
+                        <small> {{ user_object.first_name }} {{ user_object.last_name }}</small>
+                        <p>
+                            <i class="fa fa-envelope"></i> {{ user_object.email }}
+                            <br />
+                            <i class="fa fa-calendar"></i> Date Joined: {{ user_object.date_joined }}
+                        </p>
+
+                        <a type="button" class="btn btn-info" href="{% url 'user_edit' pk=user_object.pk %}">
+                            Edit
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
