@@ -4,6 +4,7 @@ from admin.controllers.mail.mailbox import MailBoxView
 from admin.controllers.mail.mail_view import MailView
 from admin.controllers.mail.delete_mail import DeleteMail
 from admin.controllers.users.users_list_view import UsersList
+from admin.controllers.users.user_edit import EditUser
 
 from .controllers.main_admin_panel_page import main_admin_panel_func
 
@@ -18,4 +19,5 @@ urlpatterns = [
 
     # ============ Users ============
     path('users/', UsersList.as_view(), name='users_list'),
+    path('users/edit/<int:pk>/', EditUser.as_view(), name='user_edit'),
 ]
