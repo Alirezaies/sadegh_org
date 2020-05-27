@@ -29,6 +29,7 @@
             Mailbox
             </a>
         </li>
+        <li class="breadcrumb-item">Delete</li>
         <li class="breadcrumb-item active">{{ title }}</li>
     </ol>
 {% endblock breadcrumb %}
@@ -39,35 +40,20 @@
 
 {% block content %}
     <div class="container-fluid">
+
         <div class="row">
             <div class="col">
-                <a type="btn" class="btn btn-danger" href="{% url 'delete_mail' pk=mail.pk %}">
-                    <i class="fa fa-trash"></i>
-                    Delete
-                </a>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fa fa-user"></i>
-                        From: 
-                        <b>
-                            {{ mail.name }} 
-                           < <a href="mailto:{{ mail.email }}">{{ mail.email }}</a> >
-                        </b><br/>
-                        <hr>
-                        <i class="fa fa-comment-dots"></i>
-                        Subject:
-                        <b>{{ mail.subject }}</b>
-                    </div>
-                    <div class="card-body">
-                        <samp>
-                            {{ mail.message }}
-                        </samp>
-                    </div>
+                <div class="alert alert-danger text-center">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>Are you sure you want to delete "{{ object.subject }}"?</p>
+                        <button type="submit" class="btn btn-danger">
+                            Confirm
+                        </button>
+                        <a type="button" class="btn btn-success" href="{% url 'mail_view' pk=object.pk %}">
+                            Cancel
+                        </a>
+                    </form>
                 </div>
             </div>
         </div>
