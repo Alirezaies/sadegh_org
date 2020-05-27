@@ -126,7 +126,6 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Subject</th>
@@ -139,7 +138,6 @@
                         <tbody>
                         {% for item in mailbox_context %}
                             <tr>
-                                <th scope="row">{{ item.pk }}</th>
 
                                 <td>
                                     {{ item.name }}
