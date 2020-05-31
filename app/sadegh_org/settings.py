@@ -29,9 +29,9 @@ if os.getenv('SECRET_KEY'):
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
-debug_flag = str(os.getenv('DEBUG'))
+DEBUG_FLAG = str(os.getenv('DEBUG'))
 
-if debug_flag == 'True':
+if DEBUG_FLAG == 'True':
     DEBUG = True
 
 ALLOWED_HOSTS = [
@@ -139,7 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'alirezaies/static/'
+STATIC_ROOT = '/static/'
 
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
@@ -147,3 +147,5 @@ LOGIN_URL = 'login'
 
 RECAPTCHA_PUBLIC_KEY = str(os.getenv('RECAPTCHA_PUBLIC_KEY'))
 RECAPTCHA_PRIVATE_KEY = str(os.getenv('RECAPTCHA_PRIVATE_KEY'))
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
