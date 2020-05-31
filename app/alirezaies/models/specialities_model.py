@@ -5,4 +5,4 @@ class Specialities(models.Model):
     desc = models.TextField(max_length=1000)
 
     def __str__(self):
-        return self.name
+        return str(self.name)

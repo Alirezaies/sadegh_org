@@ -1,8 +1,12 @@
 from django.db import models
 
 class Bio(models.Model):
-    image_url = models.CharField(max_length=2048, default='https://avatars3.githubusercontent.com/u/16784257?s=460&v=4')
+    image_url = models.CharField(max_length=2048)
     bio = models.TextField(max_length=4000)
+    name = models.CharField(max_length=32)
+    role = models.CharField(max_length=32)
+    dob = models.DateField(null=False, blank=False)
+    nationality = models.CharField(max_length=32)
 
     def __str__(self):
-        return self.bio
+        return str(self.name)

@@ -8,4 +8,4 @@ class Experience(models.Model):
     end_time = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return self.company
+        return str(self.company)

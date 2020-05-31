@@ -141,8 +141,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'alirezaies/static/'
 
-LOGOUT_REDIRECT_URL ='home'
-LOGIN_REDIRECT_URL='home'
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
 RECAPTCHA_PUBLIC_KEY = str(os.getenv('RECAPTCHA_PUBLIC_KEY'))

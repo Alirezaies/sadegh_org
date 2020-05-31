@@ -8,4 +8,4 @@ class ContactInfo(models.Model):
     def __str__(self):
         return_value = str(self.address) + '-' + str(self.phone_number) + '-' + str(self.email)
 
-        return return_value
+        return str(return_value)

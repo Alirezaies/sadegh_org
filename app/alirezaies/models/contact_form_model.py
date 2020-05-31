@@ -8,4 +8,4 @@ class ContactForm(models.Model):
     message = models.TextField(max_length=4000)
 
     def __str__(self):
-        return self.name
+        return str(self.subject)
