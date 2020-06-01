@@ -12,7 +12,6 @@ from ..models import (
     SocialLinks,
     Specialities,
     SkillCategory,
-    Skill,
     Experience,
     ContactInfo,
 )
@@ -35,7 +34,7 @@ class HomeView():
             q = model.objects.all().order_by(order_by)
             
         q_counter = model.objects.count()
-        
+
 
         #prepare objects
         # for now, only me and God know how this code works
@@ -64,7 +63,7 @@ class HomeView():
 
 # ================ Home View Controller ================
     def home_controller(self, request):
-                
+
         langs = Language.objects.all()
         bio = get_object_or_404(Bio, id=1)
         social = SocialLinks.objects.all()

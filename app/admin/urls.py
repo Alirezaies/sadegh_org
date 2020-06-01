@@ -8,6 +8,7 @@ from admin.controllers.users.user_edit import EditUser
 from admin.controllers.users.delete_user import DeleteUser
 from admin.controllers.users.user_profile import UserProfileView
 from admin.controllers.users.create_user import CreateUserView
+from admin.controllers.cv.bio import BioView
 
 from .controllers.main_admin_panel_page import main_admin_panel_func
 
@@ -26,5 +27,8 @@ urlpatterns = [
     path('users/delete/<int:pk>/', DeleteUser.as_view(), name='user_delete'),
     path('users/view/<str:username>', UserProfileView.as_view(), name='user_profile_view'),
     path('users/create/', CreateUserView.as_view(), name='user_create'),
+
+    # ============= CV ============
+    path('cv/bio/', BioView.as_view(), name='cv_bio'),
 
 ]
