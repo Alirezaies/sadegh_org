@@ -11,7 +11,6 @@ class BioView(SuperUserPermissionMixin, UpdateView):
     """
 
     model = Bio
-    context_object_name = 'bio_context'
     template_name = 'admin/cv/bio.html'
     form_class = EditBioForm
     success_url = reverse_lazy('cv_bio')

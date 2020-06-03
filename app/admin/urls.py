@@ -9,6 +9,9 @@ from admin.controllers.users.delete_user import DeleteUser
 from admin.controllers.users.user_profile import UserProfileView
 from admin.controllers.users.create_user import CreateUserView
 from admin.controllers.cv.bio import BioView
+from admin.controllers.cv.social_link import SocialLinkView
+from admin.controllers.cv.edit_social_links import SocialLinkEditView
+from admin.controllers.cv.add_social_link import AddSocialLinkView
 
 from .controllers.main_admin_panel_page import main_admin_panel_func
 
@@ -30,5 +33,8 @@ urlpatterns = [
 
     # ============= CV ============
     path('cv/bio/', BioView.as_view(), name='cv_bio'),
+    path('cv/social_links/', SocialLinkView.as_view(), name='cv_view_social_link'),
+    path('cv/social_links/edit/<int:pk>/', SocialLinkEditView.as_view(), name='cv_edit_social_link'),
+    path('cv/social_links/create/', AddSocialLinkView.as_view(), name='cv_add_social_link'),
 
 ]

@@ -1,0 +1,90 @@
+{% extends '../master.html' %}
+
+{% load static %}
+
+{% block header %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <title>{{ title }}</title>
+
+        <link href="{% static 'admin/css/styles.css' %}" rel="stylesheet" />
+
+        <script src="{% static 'admin/js/all.min.js' %}"></script>
+        <script src="{% static 'css/font-awesome.min.css' %}"></script>
+    </head>
+{% endblock header %}
+
+{% block breadcrumb %}
+{% comment %} TODO: Fix the breadcrumb {% endcomment %}
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">
+            <a href="{% url 'admin_dashboard' %}">
+                Dashboard
+            </a>
+        </li>
+        <li class="breadcrumb-item active">Users</li>
+    </ol>
+{% endblock breadcrumb %}
+
+{% block sidebar %}
+    {% include '../includes/sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row margin-bottom-15">
+            <div class="col text-center">
+                {% comment %} TODO: fix the social edit link {% endcomment %}
+                <a role="button" class="btn btn-success" href="#">
+                    Add New Link
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            </div>
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Link</th>
+                                <th scope="col">Icon</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for item in links %}
+                            <tr>
+
+                                <td>
+                                    {{ item.name }}
+                                </td>
+
+                                <td>
+                                    <a href="{{ item.link }}">
+                                    {{ item.link }}
+                                    </a>
+                                </td>
+
+                                <td>
+                                    
+                                    <i class="{{ item.icon_class }}"></i>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+
+                {% include '../includes/paginator/paginator.html' %}
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
