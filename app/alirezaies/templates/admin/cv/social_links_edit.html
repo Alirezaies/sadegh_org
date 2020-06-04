@@ -18,14 +18,10 @@
 {% endblock header %}
 
 {% block breadcrumb %}
-    {% comment %}
-    **** TODO: fix the breadcrumb ****
-    {% endcomment %}
-    
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'users_list' %}">Users</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item"><a href="{% url 'cv_view_social_link' %}">Social Links</a></li>
+        <li class="breadcrumb-item active">Edit</li>
     </ol>
 {% endblock breadcrumb %}
 
