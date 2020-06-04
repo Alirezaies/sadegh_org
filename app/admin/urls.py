@@ -12,6 +12,7 @@ from admin.controllers.cv.bio import BioView
 from admin.controllers.cv.social_link import SocialLinkView
 from admin.controllers.cv.edit_social_links import SocialLinkEditView
 from admin.controllers.cv.add_social_link import AddSocialLinkView
+from admin.controllers.cv.delete_social_link import DeleteSocialLinkView
 
 from .controllers.main_admin_panel_page import main_admin_panel_func
 
@@ -36,5 +37,6 @@ urlpatterns = [
     path('cv/social_links/', SocialLinkView.as_view(), name='cv_view_social_link'),
     path('cv/social_links/edit/<int:pk>/', SocialLinkEditView.as_view(), name='cv_edit_social_link'),
     path('cv/social_links/create/', AddSocialLinkView.as_view(), name='cv_add_social_link'),
+    path('cv/social_links/delete/<int:pk>/', DeleteSocialLinkView.as_view(), name='cv_delete_social_link'),
 
 ]
